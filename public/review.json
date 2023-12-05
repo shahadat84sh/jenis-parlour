@@ -1,0 +1,42 @@
+[
+    {
+      "id":1,
+      "picture": "https://i.ibb.co/5Rc732d/review-1.jpg",
+      "name": "Simon Miranda",
+      "rating": 4,
+      "company": "MICROLUXE",
+      "about": "In officia proident occaecat non adipisicing ea pariatur commodo eu ex."
+    },
+    {
+      "id":2,
+      "picture": "https://i.ibb.co/wgRBxxZ/review-2.jpg",
+      "name": "Lynnette Santos",
+      "rating": 5,
+      "company": "TERRAGO",
+      "about": "Laborum ex elit labore cillum sunt minim dolor veniam tempor magna sit velit culpa."
+    },
+    {
+      "id":3,
+      "picture": "https://i.ibb.co/PrH9LkP/review-3.jpg",
+      "name": "Manning Everett",
+      "rating": 5,
+      "company": "MUSAPHICS",
+      "about": "Excepteur commodo cupidatat incididunt labore reprehenderit."
+    },
+    {
+      "id":4,
+      "picture": "https://i.ibb.co/hfRwXQw/review-4.jpg",
+      "name": "Bradley Gordon",
+      "rating": 4,
+      "company": "SCENTY",
+      "about": "Non cupidatat nulla sunt cillum."
+    },
+    {
+      "id":5,
+      "picture": "https://i.ibb.co/bL6mYK7/review-5.jpg",
+      "name": "Morgan Benton",
+      "rating": 2,
+      "company": "DAISU",
+      "about": "Adipisicing fugiat pariatur do ea deserunt et ut dolor amet esse."
+    }
+  ]
