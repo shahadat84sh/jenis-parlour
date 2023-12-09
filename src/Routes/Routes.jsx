@@ -12,6 +12,7 @@ import Addservice from "../Components/AdminPortfolio/Addservice";
 import MakeAdmin from "../Components/AdminPortfolio/MakeAdmin";
 import ManageService from "../Components/AdminPortfolio/ManageService";
 import NotFound from "./NotFound";
+import PrivateRoute from "./PrivateRoute";
 
   
   export const router = createBrowserRouter([
@@ -36,7 +37,7 @@ import NotFound from "./NotFound";
     // portfolio ralated
     {
       path:'/portfolio',
-      element:<UserPort></UserPort>,
+      element:<PrivateRoute><UserPort></UserPort></PrivateRoute>,
       children:[
         {
           path:'/portfolio/booking',

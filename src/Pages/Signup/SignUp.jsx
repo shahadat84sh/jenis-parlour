@@ -4,12 +4,10 @@ import { FaEye } from "react-icons/fa";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import useAxiosPublic from "../../Components/SocilaLogin/Hooks/useAxiosPublic";
 
 const SignUp = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext)
   const [password, setPassword] = useState("");
-  const axiosPublic = useAxiosPublic();
   const {register,handleSubmit,reset, formState: { errors }} = useForm();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate()
@@ -17,9 +15,6 @@ const SignUp = () => {
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
-  
- 
-
   const onSubmit = data =>{
     createUser(data.email, data.password)
     .then(result =>{
@@ -28,11 +23,16 @@ const SignUp = () => {
       updateUserProfile(data.name, data.photoURL)
      .then( () =>{
       const userInfo ={ name:data.name, email:data.email }
-      axiosPublic.post('/users', userInfo)
-      .then(res =>{
-        if(res.data.insertedId){
-          console.log('user added to database');
-          reset()
+      fetch('http://localhost:5000/users',{
+        method:'POST',
+        headers:{
+          'content-type':'application/json'
+        },
+        body:JSON.stringify(userInfo)
+      })
+      .then(res => res.json())
+      .then(data =>{
+        if(data.insertedId){
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -40,8 +40,8 @@ const SignUp = () => {
             showConfirmButton: false,
             timer: 1500
         });
-        navigate('/')
         }
+        navigate('/')
       })
      }) 
      .catch(err => console.log(err))

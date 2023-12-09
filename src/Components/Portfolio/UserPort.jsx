@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import logo from "../../assets/logo.png";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import UserNav from "./UserNav";
 import { AuthContext } from "../../Provider/AuthProvider";
 import AdminNav from "./AdminNav";
+import { Helmet } from "react-helmet";
 
 const UserPort = () => {
   const [name, setName] = useState("");
   const { user } = useContext(AuthContext);
-  const isAdmin = true;
+  const isAdmin = false;
   useEffect(() => {
     const updateName = () => {
       const pathname = window.location.pathname;
@@ -34,16 +35,20 @@ const UserPort = () => {
   }, []);
   return (
     <>
+    <Helmet>
+      <title>Jerin's Parlour || Portfolio</title>
+    </Helmet>
       <div className="navbar bg-base-100">
-        <div className="flex">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           <div className="flex-1">
             <figure>
-              <img src={logo} className="w-32 ps-5 pt-5" alt="" />
+              <Link to="/"><img src={logo} className="w-32 ps-5 pt-5" alt="" /></Link>
             </figure>
           </div>
-          <p className="text-3xl text-bold ps-16 capitalize">{name}</p>
+          <p className="text-3xl text-bold capitalize">{name}</p>
+          <p className="md:ms-32 lg:ms-64">{user?.displayName}</p>
         </div>
-        <div className="flex-none">{user?.username}</div>
+        
       </div>
 
       <div className="drawer lg:drawer-open bg-[#F4F7FC]">

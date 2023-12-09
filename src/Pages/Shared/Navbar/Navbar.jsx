@@ -28,6 +28,7 @@ const Navbar = () => {
           <button onClick={handleLogOut} className="h-10 text-white hover:text-black  bg-pink-500 w-24 text-center hover:bg-transparent rounded-md">
             <Link>Logout</Link>
           </button>
+          <p className="mt-2 ms-2 text-lg">{user?.displayName}</p>
         </>
       ) : (
         <>
@@ -62,13 +63,13 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-md dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-md dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             {navOptions}
           </ul>
         </div>
         <Link to="/">
-          <img src={logo} className="w-28" alt="" />
+          <img src={logo} className="w-20" alt="" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

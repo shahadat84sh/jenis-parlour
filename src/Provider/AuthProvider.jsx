@@ -48,16 +48,23 @@ const AuthProvider = ( {children} ) => {
             setUser(currentUser)
             if(currentUser){
                 const userInfo = {email:currentUser.email}
-                axiosPublic.post('/jwt', userInfo)
-                .then(res => {
-                    if(res.data.token){
-                        localStorage.setItem('access-token', res.data.token)
+                fetch('http://localhost:5000/jwt', {
+                    method:'POST',
+                    headers:{
+                        'content-type':'application/json'
+                    },
+                    body:JSON.stringify(userInfo)
+                }).then(res => res.json())
+                .then(data =>{
+                    if(data.token){
+                        localStorage.setItem('access-token', data.token)
+                        setLoading(false)
                     }
-                })
-            }else{
-                localStorage.removeItem('access-token')
-            }
-            setLoading(false)
+                })  }
+                    else{
+                            localStorage.removeItem('access-token')
+                            setLoading(false)
+                        }
         })
         return () =>{
             return unsubscribe()
